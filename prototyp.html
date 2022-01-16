@@ -305,71 +305,38 @@
         #purchase.changeColor{
             background-color: #3f3f3f;
         }
-        #loader-wrapper {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: #ECF0F1;
-       
+        .preloader
+{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: #3f3f3f;
+z-index: 9999;
+text-align: center;
 }
-.load {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-   
+.preloader-icon
+{
+position: relative;
+top: 45%;
+width: 100px;
+border-radius: 50%;
+animation: shake 1.5s infinite;
 }
-
-.load hr {
-    border: 0;
-    margin: 0;
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    border-radius: 50%;
-    animation: spin 2s ease infinite;
-}
-
-.load :first-child {
-    background: #19A68C;
-    animation-delay: -1.5s;
-}
-
-.load :nth-child(2) {
-    background: #F63D3A;
-    animation-delay: -1s;
-}
-
-.load :nth-child(3) {
-    background: #FDA543;
-    animation-delay: -0.5s;
-}
-
-.load :last-child {
-    background: #193B48;
-}
-
-@keyframes spin {
-    0%, 100% {
-        transform: translate(0)
-    }
-    25% {
-        transform: translate(160%)
-    }
-    50% {
-        transform: translate(160%, 160%)
-    }
-    75% {
-        transform: translate(0, 160%)
-    }
-}
-.js .load, .js #loader-wrapper {
-  display: block;
+@keyframes shake
+{
+0% { transform: translate(1px, -1px) rotate(0deg);}
+10% { transform: translate(1px, -3px) rotate(-1deg);}
+20% { transform: translate(1px, -5px) rotate(-3deg);}
+30% { transform: translate(1px, -7px) rotate(0deg);}
+40% { transform: translate(1px, -9px) rotate(1deg);}
+50% { transform: translate(1px, -11px) rotate(3deg);}
+60% { transform: translate(1px, -9px) rotate(0deg);}
+70% { transform: translate(1px, -7px) rotate(-1deg);}
+80% { transform: translate(1px, -5px) rotate(-3deg);}
+90% { transform: translate(1px, -3px) rotate(0deg);}
+100% { transform: translate(1px, -1px) rotate(-1deg);}
 }
 
     </style>
@@ -378,11 +345,9 @@
 
 </head>
 <body>
-    <div id="loader-wrapper">
-        <div class="load">
-          <hr/><hr/><hr/><hr/>
-        </div>
-    </div>
+    <div class="preloader"> <img class="preloader-icon" src="14.jpg" alt="My Site Preloader"> </div>
+   
+
 <div id=container>
     <div id="nav">
         <div id="logo">FUTURE STAR</div>
@@ -438,14 +403,15 @@
 </script>
 
 <script>
-    $(window).load(function() {
-    setTimeout(
-        function() {
-            $("#loader-wrapper").fadeOut();
-        }, 3000);
-});
-    $('html').addClass('js');
+   
+  window.onload = function(){
+      
+      document.querySelector(".preloader").style.display = "none";
+    
+     }
 
+   
+    
     $(function() {
  $(window).scroll(function () {
     if ($(this).scrollTop() > 50) {
@@ -460,8 +426,9 @@
  });
 });
 
-
+   
 </script>
+
 
 
 </body>
